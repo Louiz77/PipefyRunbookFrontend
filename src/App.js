@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
 import Navbar from './components/Navbar';
-import ReportForm from './components/ReportForm';
+import ReportForm from './components/pages/ReportForm';
 import ModalLoading from './components/ModalLoading';
 import ModalSuccess from './components/ModalSuccess';
-import HomePage from './components/HomePage';
+import HomePage from './components/pages/HomePage';
 import Conta from './auth/Conta';
+import Cirion from './components/pages/CirionReport'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import CardGrid from './components/CardGrid';
 
 function App() {
   const [isGenerating, setIsGenerating] = useState(false);
@@ -64,6 +66,7 @@ function App() {
               element={
                 <>
                   <HomePage />
+                  <CardGrid />
                 </>
               }
             />
@@ -90,6 +93,16 @@ function App() {
                   <h1 className="my-2 text-center">Entre na sua conta ITFácil Dashboard</h1>
                   <p className="text-center">Coloque as suas informações de login abaixo</p>
                   <Conta />
+                  <div className='m-5'/>
+                  <CardGrid className="m-5" />
+                </>
+              }
+            />
+            <Route
+              path="/cirion"
+              element={
+                <>
+                  <Cirion className="m-5"/>
                 </>
               }
             />
