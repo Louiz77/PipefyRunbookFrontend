@@ -72,22 +72,21 @@ const BackupStatusPage = () => {
             throw new Error(`Erro: ${response.status}`);
         }
 
-        // Receber o arquivo PDF como Blob
         const blob = await response.blob();
         const downloadUrl = window.URL.createObjectURL(blob);
         const link = document.createElement('a');
         link.href = downloadUrl;
 
-        // Definir nome do arquivo para download
+        //nome do arquivo para download
         link.download = "relatorio_comparativo_cirion.pdf";
         document.body.appendChild(link);
         link.click();
 
-        // Limpar o URL após o download
+        //cleana URL apos download
         window.URL.revokeObjectURL(downloadUrl);
         document.body.removeChild(link);
 
-        // Refresh automático após sucesso (se necessário)
+        //refresh automático apos sucesso
         fetchData();
     } catch (error) {
         console.error(error.message);
@@ -115,7 +114,7 @@ const BackupStatusPage = () => {
     fetchData();
   }, []);
 
-  // Lógica para aplicar o filtro
+  // filtro
   const handleFilterChange = (e) => {
     const selectedStatus = e.target.value;
     setStatusFilter(selectedStatus);
