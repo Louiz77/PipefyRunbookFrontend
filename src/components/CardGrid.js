@@ -4,7 +4,7 @@ const CardGrid = () => {
   const cards = [
     { img: 'rb_2548.png', text: 'Relatórios Automatizados', link: '/relatorios' },
     { img: 'ilustracao-do-conceito-de-status-do-servidor.png', text: 'Grafana', link: 'http://10.5.8.145:3000/?orgId=1' },
-    { img: 'rb_6820.png', text: 'Zabbix' },
+    { img: 'rb_6820.png', text: 'Zabbix', link: 'http://10.5.8.145/zabbix/'},
     { img: 'rb_13016.png', text: 'Pipefy', link: 'https://app.pipefy.com/pipes/304582953' }
   ];
 
