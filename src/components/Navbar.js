@@ -14,8 +14,9 @@ const NavigationBar = () => {
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="m-auto">
             <Nav.Link href="/">Início</Nav.Link>
-            <Nav.Link href="/relatorios">Relatórios Automatizados</Nav.Link>
-            <Nav.Link href="/cirion">Relatórios Cirion</Nav.Link>
+            <Nav.Link href="/relatorios">Runbook</Nav.Link>
+            <Nav.Link href="/cirion">Cirion</Nav.Link>
+            <Nav.Link href="http://10.5.9.45:3006">Inventario</Nav.Link>
             <Nav.Link href="http://10.5.8.145:3000/?orgId=1">Grafana</Nav.Link>
             <Nav.Link href="http://10.5.8.145/zabbix">Zabbix</Nav.Link>
             <Nav.Link href="https://app.pipefy.com/pipes/304582953">Pipefy</Nav.Link>
