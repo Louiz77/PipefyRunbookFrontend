@@ -24,7 +24,7 @@ function App() {
       body: new FormData(formElement),
     };
 
-    fetch('http://localhost:8530/relatorios/gerar', fetchOptions)
+    fetch('http://10.5.9.45:8530/relatorios/gerar', fetchOptions)
       .then((response) => response.json())
       .then((data) => {
         if (data.status === 'Relatório em processamento') {
@@ -32,7 +32,7 @@ function App() {
 
           // Verifica o status do relatório periodicamente
           const interval = setInterval(() => {
-            fetch(`http://localhost:8530/relatorios/status/${reportId}`)
+            fetch(`http://10.5.9.45:8530/relatorios/status/${reportId}`)
               .then((response) => response.json())
               .then((statusData) => {
                 if (statusData.status === 'pronto') {
