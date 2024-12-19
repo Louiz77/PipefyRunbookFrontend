@@ -23,7 +23,7 @@ const BackupStatusPage = () => {
   const [statusFilter, setStatusFilter] = useState("All"); // Filtro para status
 
   async function atualizarPlanilha() {
-    const url = "http://localhost:5050/backup/check";
+    const url = "http://10.5.9.45:5050/backup/check";
     
     const spinner = document.getElementById('spinner');
     const mensagemErro = document.getElementById('mensagemErro');
@@ -53,7 +53,7 @@ const BackupStatusPage = () => {
   }
 
   async function gerarPDF() {
-    const url = "http://localhost:5050/backup/report";
+    const url = "http://10.5.9.45:5050/backup/report";
 
     const spinner = document.getElementById('spinner');
     const mensagemErro = document.getElementById('mensagemErro');
@@ -99,7 +99,7 @@ const BackupStatusPage = () => {
 
   // Função para buscar dados do backend
   const fetchData = () => {
-    fetch('http://localhost:5050/backup/status')
+    fetch('http://10.5.9.45:5050/backup/status')
       .then((res) => res.json())
       .then((data) => {
         setSummary(data.summary);
