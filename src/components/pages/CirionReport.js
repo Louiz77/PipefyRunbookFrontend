@@ -106,6 +106,7 @@ const BackupStatusPage = () => {
         setDetails(data.details);
         setFilteredDetails(data.details); // Inicializa com todos os detalhes
         setDate(data.date);
+        console.log(data)
       })
       .catch((err) => console.error('Erro ao carregar dados:', err));
   };
@@ -128,10 +129,10 @@ const BackupStatusPage = () => {
   };
 
   const chartData = {
-    labels: ['Successful', 'Error', 'Partially Successful'],
+    labels: ['Successful', 'Failed', 'Partially Successful'],
     datasets: [
       {
-        data: summary ? [summary.Successful || 0, summary.Error || 0, summary.Partially || 0] : [],
+        data: summary ? [summary.Successful || 0, summary.Failed || 0, summary.Partially || 0] : [],
         backgroundColor: ['#4caf50', '#f44336', '#ff9800'],
       },
     ],
@@ -181,7 +182,7 @@ const BackupStatusPage = () => {
                   <Form.Control as="select" value={statusFilter} onChange={handleFilterChange}>
                     <option value="All">Todos</option>
                     <option value="Successful">Successful</option>
-                    <option value="Error">Error</option>
+                    <option value="Failed">Failed</option>
                     <option value="Partially Successful">Partially Successful</option>
                   </Form.Control>
               </Form.Group>
