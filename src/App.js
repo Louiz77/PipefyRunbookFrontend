@@ -7,6 +7,7 @@ import ModalSuccess from './components/ModalSuccess';
 import HomePage from './components/pages/HomePage';
 import Conta from './auth/Conta';
 import Cirion from './components/pages/CirionReport'
+import ChamadosFaturados from './components/pages/TotvsControl'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import CardGrid from './components/CardGrid';
@@ -103,6 +104,14 @@ function App() {
               element={
                 <>
                   <Cirion className="m-5"/>
+                </>
+              }
+            />
+            <Route
+              path='/chamados'
+              element={
+                <>
+                <ChamadosFaturados className='m-2'/>
                 </>
               }
             />
