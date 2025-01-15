@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Container, Alert, Spinner, Badge, Button } from 'react-bootstrap';
+import { Table, Alert, Spinner, Badge, Button } from 'react-bootstrap';
 
 const ChamadosTable = () => {
   const [chamados, setChamados] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState('');
+  const [downloading, setDownloading] = useState(false); // Estado para controlar o spinner do download
 
   // buscar dados do backend
   const fetchChamados = async () => {
@@ -13,7 +14,7 @@ const ChamadosTable = () => {
       if (response.ok) {
         const data = await response.json();
         setChamados(data);
-        console.log(data)
+        console.log(data);
       } else {
         setError('Erro ao carregar os dados.');
       }
@@ -28,13 +29,14 @@ const ChamadosTable = () => {
     fetchChamados();
   }, []);
 
-const handleDownload = async () => {
+  const handleDownload = async () => {
+    setDownloading(true); // Exibe o spinner de download
     try {
-    const response = await fetch('http://10.5.8.145:5000/report/generate', {
+      const response = await fetch('http://10.5.8.145:5000/report/generate', {
         method: 'GET',
-    });
+      });
 
-    if (response.ok) {
+      if (response.ok) {
         const blob = await response.blob();
         const url = window.URL.createObjectURL(blob);
         const a = document.createElement('a');
@@ -42,13 +44,17 @@ const handleDownload = async () => {
         a.download = 'relatorio_chamados.pdf';
         a.click();
         window.URL.revokeObjectURL(url);
-    } else {
+      } else {
         console.error('Erro ao gerar relatório:', response.statusText);
-    }
+        alert('Erro ao gerar relatório. Por favor, tente novamente.');
+      }
     } catch (error) {
-    console.error('Erro na solicitação:', error);
+      console.error('Erro na solicitação:', error);
+      alert('Erro ao gerar relatório. Por favor, tente novamente.');
+    } finally {
+      setDownloading(false); // Oculta o spinner de download
     }
-};
+  };
 
   return (
     <div className="my-5">
@@ -73,11 +79,24 @@ const handleDownload = async () => {
 
       {error && <Alert variant="danger">{error}</Alert>}
       <div className="d-grid gap-2 m-5">
-        <Button variant="success" onClick={handleDownload}>
-          Baixar Relatório
+        <Button variant="success" onClick={handleDownload} disabled={downloading}>
+          {downloading ? (
+            <>
+              <Spinner
+                as="span"
+                animation="border"
+                size="sm"
+                role="status"
+                aria-hidden="true"
+              />
+              {' '}Gerando Relatório...
+            </>
+          ) : (
+            'Baixar Relatório'
+          )}
         </Button>
       </div>
-      
+
       {!loading && !error && (
         <Table striped bordered hover responsive className="text-center">
           <thead>

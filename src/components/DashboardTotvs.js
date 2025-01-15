@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Table, Container, Card, Row, Col, Spinner, Button } from 'react-bootstrap';
+import { Table, Card, Row, Col, Spinner, Button } from 'react-bootstrap';
 import { Pie } from 'react-chartjs-2';
 import DashboardTotvsMensal from '../components/DashboardTotvsMensal'
 import 'chart.js/auto';
