@@ -45,7 +45,7 @@ const ChamadosFaturados = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const response = await fetch('http://10.5.8.145:5000/api/chamados', {
+      const response = await fetch('http://10.5.8.145:5670/api/chamados', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

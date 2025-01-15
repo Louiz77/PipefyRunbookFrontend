@@ -10,7 +10,7 @@ const ChamadosTable = () => {
   // buscar dados do backend
   const fetchChamados = async () => {
     try {
-      const response = await fetch('http://10.5.8.145:5000/api/chamados');
+      const response = await fetch('http://10.5.8.145:5670/api/chamados');
       if (response.ok) {
         const data = await response.json();
         setChamados(data);
@@ -32,7 +32,7 @@ const ChamadosTable = () => {
   const handleDownload = async () => {
     setDownloading(true); // Exibe o spinner de download
     try {
-      const response = await fetch('http://10.5.8.145:5000/report/generate', {
+      const response = await fetch('http://10.5.8.145:5670/report/generate', {
         method: 'GET',
       });
 

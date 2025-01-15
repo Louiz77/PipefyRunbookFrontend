@@ -13,7 +13,7 @@ const DashboardTotvsMensal = () => {
     setLoading(true);
     setError('');
     try {
-      const response = await fetch(`http://10.5.8.145:5000/pipefy/cards_by_month?month=${month}`);
+      const response = await fetch(`http://10.5.8.145:5670/pipefy/cards_by_month?month=${month}`);
       if (!response.ok) throw new Error('Erro ao buscar dados');
       const responseData = await response.json();
       setData(responseData);

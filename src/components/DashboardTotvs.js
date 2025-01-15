@@ -10,7 +10,7 @@ const DashboardTotvs = () => {
 
   const fetchTotvsData = async () => {
     try {
-      const response = await fetch('http://10.5.8.145:5000/pipefy/cards');
+      const response = await fetch('http://10.5.8.145:5670/pipefy/cards');
       if (!response.ok) throw new Error('Erro ao buscar dados do Pipefy');
       const data = await response.json();
       setDashboardData(data);
