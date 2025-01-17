@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Row, Col, Form, Card, Spinner } from 'react-bootstrap';
 import { Pie, Bar } from 'react-chartjs-2';
+import MonthlyReport from '../components/report/ReportMonth'
 import 'chart.js/auto';
 
 const DashboardTotvsMensal = () => {
@@ -65,7 +66,6 @@ const DashboardTotvsMensal = () => {
           <h1 className="text-center">Visualização Mensal</h1>
         </Col>
       </Row>
-
       <Row className="mb-4">
         <Col>
           <Form>
@@ -154,6 +154,40 @@ const DashboardTotvsMensal = () => {
           </Row>
         </>
       )}
+      <MonthlyReport />
+      <div
+      style={{
+        textAlign: 'center',
+        margin: '50px 0',
+        position: 'relative',
+      }}
+      >
+          <span
+            style={{
+              background: '#fff',
+              padding: '0 15px',
+              fontSize: '30px',
+              fontWeight: 'bold',
+              color: '#555',
+              position: 'relative',
+              zIndex: 1,
+            }}
+          >
+            — TOTVS FATURADO —
+          </span>
+          <div
+            style={{
+              position: 'absolute',
+              top: '50%',
+              left: '0',
+              right: '0',
+              height: '2px',
+              background: '#ccc',
+              zIndex: 0,
+            }}
+          >
+        </div>
+      </div>
     </div>
   );
 };
